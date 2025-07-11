@@ -3,6 +3,11 @@ pragma solidity ^0.8.13;
 
 import "sim-idx-sol/Simidx.sol";
 import "sim-idx-generated/Generated.sol";
+import "./Listener_v100.sol";
+import "./Listener_v111.sol";
+import "./Listener_v130.sol";
+import "./Listener_v141.sol";
+import "./Listener_v150.sol";
 
 contract Triggers is BaseTriggers {
     function triggers() external virtual override {
@@ -53,60 +58,5 @@ contract Triggers is BaseTriggers {
             ),
             listener_v150.triggerOnProxyCreationEvent()
         );
-    }
-}
-
-contract Listener_v100 is Safe_v100_SafeProxyFactory$OnProxyCreationEvent {
-    event ProxyCreation(address proxy);
-
-    function onProxyCreationEvent(
-        EventContext memory ctx,
-        Safe_v100_SafeProxyFactory$ProxyCreationEventParams memory inputs
-    ) external override {
-        emit ProxyCreation(inputs.proxy);
-    }
-}
-
-contract Listener_v111 is Safe_v111_SafeProxyFactory$OnProxyCreationEvent {
-    event ProxyCreation(address proxy);
-
-    function onProxyCreationEvent(
-        EventContext memory ctx,
-        Safe_v111_SafeProxyFactory$ProxyCreationEventParams memory inputs
-    ) external override {
-        emit ProxyCreation(inputs.proxy);
-    }
-}
-
-contract Listener_v130 is Safe_v130_SafeProxyFactory$OnProxyCreationEvent {
-    event ProxyCreation(address proxy);
-
-    function onProxyCreationEvent(
-        EventContext memory ctx,
-        Safe_v130_SafeProxyFactory$ProxyCreationEventParams memory inputs
-    ) external override {
-        emit ProxyCreation(inputs.proxy);
-    }
-}
-
-contract Listener_v141 is Safe_v141_SafeProxyFactory$OnProxyCreationEvent {
-    event ProxyCreation(address proxy);
-
-    function onProxyCreationEvent(
-        EventContext memory ctx,
-        Safe_v141_SafeProxyFactory$ProxyCreationEventParams memory inputs
-    ) external override {
-        emit ProxyCreation(inputs.proxy);
-    }
-}
-
-contract Listener_v150 is Safe_v150_SafeProxyFactory$OnProxyCreationEvent {
-    event ProxyCreation(address proxy);
-
-    function onProxyCreationEvent(
-        EventContext memory ctx,
-        Safe_v150_SafeProxyFactory$ProxyCreationEventParams memory inputs
-    ) external override {
-        emit ProxyCreation(inputs.proxy);
     }
 }
