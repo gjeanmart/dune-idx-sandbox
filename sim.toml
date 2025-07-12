@@ -1,2 +1,5 @@
 [app]
 name = "dune-idx-sandbox"
+
+[listeners]
+codegen_naming_convention = "abi_prefix"
