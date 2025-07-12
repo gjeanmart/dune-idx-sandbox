@@ -6,4 +6,14 @@ import { db, types } from "@duneanalytics/sim-idx";
 export const proxyCreation = table("proxy_creation", {
   chainId: db.uint256('chain_id'),
   proxy: db.address('proxy'),
+  version: t.text('version'),
+})
+
+export const safeSetup = table("safe_setup", {
+  chainId: db.uint256('chain_id'),
+  safe: db.address('safe'),
+  initiator: db.address('initiator'),
+  owner: db.address('owner'),
+  threshold: db.uint256('threshold'),
+  fallbackHandler: db.address('fallback_handler'),
 })

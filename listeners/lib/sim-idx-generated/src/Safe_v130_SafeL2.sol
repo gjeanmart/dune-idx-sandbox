@@ -1,0 +1,1548 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+import "lib/sim-idx-sol/src/Triggers.sol";
+import "lib/sim-idx-sol/src/Context.sol";
+
+function Safe_v130_SafeL2$Abi() pure returns (Abi memory) {
+    return Abi("Safe_v130_SafeL2");
+}
+struct Safe_v130_SafeL2$VersionFunctionOutputs {
+    string outArg0;
+}
+
+struct Safe_v130_SafeL2$AddOwnerWithThresholdFunctionInputs {
+    address owner;
+    uint256 _threshold;
+}
+
+struct Safe_v130_SafeL2$ApproveHashFunctionInputs {
+    bytes32 hashToApprove;
+}
+
+struct Safe_v130_SafeL2$ApprovedHashesFunctionInputs {
+    address outArg0;
+    bytes32 outArg1;
+}
+
+struct Safe_v130_SafeL2$ApprovedHashesFunctionOutputs {
+    uint256 outArg0;
+}
+
+struct Safe_v130_SafeL2$ChangeThresholdFunctionInputs {
+    uint256 _threshold;
+}
+
+struct Safe_v130_SafeL2$CheckNSignaturesFunctionInputs {
+    bytes32 dataHash;
+    bytes data;
+    bytes signatures;
+    uint256 requiredSignatures;
+}
+
+struct Safe_v130_SafeL2$CheckSignaturesFunctionInputs {
+    bytes32 dataHash;
+    bytes data;
+    bytes signatures;
+}
+
+struct Safe_v130_SafeL2$DisableModuleFunctionInputs {
+    address prevModule;
+    address module;
+}
+
+struct Safe_v130_SafeL2$DomainSeparatorFunctionOutputs {
+    bytes32 outArg0;
+}
+
+struct Safe_v130_SafeL2$EnableModuleFunctionInputs {
+    address module;
+}
+
+struct Safe_v130_SafeL2$EncodeTransactionDataFunctionInputs {
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+    uint256 safeTxGas;
+    uint256 baseGas;
+    uint256 gasPrice;
+    address gasToken;
+    address refundReceiver;
+    uint256 _nonce;
+}
+
+struct Safe_v130_SafeL2$EncodeTransactionDataFunctionOutputs {
+    bytes outArg0;
+}
+
+struct Safe_v130_SafeL2$ExecTransactionFunctionInputs {
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+    uint256 safeTxGas;
+    uint256 baseGas;
+    uint256 gasPrice;
+    address gasToken;
+    address refundReceiver;
+    bytes signatures;
+}
+
+struct Safe_v130_SafeL2$ExecTransactionFunctionOutputs {
+    bool outArg0;
+}
+
+struct Safe_v130_SafeL2$ExecTransactionFromModuleFunctionInputs {
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+}
+
+struct Safe_v130_SafeL2$ExecTransactionFromModuleFunctionOutputs {
+    bool success;
+}
+
+struct Safe_v130_SafeL2$ExecTransactionFromModuleReturnDataFunctionInputs {
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+}
+
+struct Safe_v130_SafeL2$ExecTransactionFromModuleReturnDataFunctionOutputs {
+    bool success;
+    bytes returnData;
+}
+
+struct Safe_v130_SafeL2$GetChainIdFunctionOutputs {
+    uint256 outArg0;
+}
+
+struct Safe_v130_SafeL2$GetModulesPaginatedFunctionInputs {
+    address start;
+    uint256 pageSize;
+}
+
+struct Safe_v130_SafeL2$GetModulesPaginatedFunctionOutputs {
+    address[] array;
+    address next;
+}
+
+struct Safe_v130_SafeL2$GetOwnersFunctionOutputs {
+    address[] outArg0;
+}
+
+struct Safe_v130_SafeL2$GetStorageAtFunctionInputs {
+    uint256 offset;
+    uint256 length;
+}
+
+struct Safe_v130_SafeL2$GetStorageAtFunctionOutputs {
+    bytes outArg0;
+}
+
+struct Safe_v130_SafeL2$GetThresholdFunctionOutputs {
+    uint256 outArg0;
+}
+
+struct Safe_v130_SafeL2$GetTransactionHashFunctionInputs {
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+    uint256 safeTxGas;
+    uint256 baseGas;
+    uint256 gasPrice;
+    address gasToken;
+    address refundReceiver;
+    uint256 _nonce;
+}
+
+struct Safe_v130_SafeL2$GetTransactionHashFunctionOutputs {
+    bytes32 outArg0;
+}
+
+struct Safe_v130_SafeL2$IsModuleEnabledFunctionInputs {
+    address module;
+}
+
+struct Safe_v130_SafeL2$IsModuleEnabledFunctionOutputs {
+    bool outArg0;
+}
+
+struct Safe_v130_SafeL2$IsOwnerFunctionInputs {
+    address owner;
+}
+
+struct Safe_v130_SafeL2$IsOwnerFunctionOutputs {
+    bool outArg0;
+}
+
+struct Safe_v130_SafeL2$NonceFunctionOutputs {
+    uint256 outArg0;
+}
+
+struct Safe_v130_SafeL2$RemoveOwnerFunctionInputs {
+    address prevOwner;
+    address owner;
+    uint256 _threshold;
+}
+
+struct Safe_v130_SafeL2$RequiredTxGasFunctionInputs {
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+}
+
+struct Safe_v130_SafeL2$RequiredTxGasFunctionOutputs {
+    uint256 outArg0;
+}
+
+struct Safe_v130_SafeL2$SetFallbackHandlerFunctionInputs {
+    address handler;
+}
+
+struct Safe_v130_SafeL2$SetGuardFunctionInputs {
+    address guard;
+}
+
+struct Safe_v130_SafeL2$SetupFunctionInputs {
+    address[] _owners;
+    uint256 _threshold;
+    address to;
+    bytes data;
+    address fallbackHandler;
+    address paymentToken;
+    uint256 payment;
+    address paymentReceiver;
+}
+
+struct Safe_v130_SafeL2$SignedMessagesFunctionInputs {
+    bytes32 outArg0;
+}
+
+struct Safe_v130_SafeL2$SignedMessagesFunctionOutputs {
+    uint256 outArg0;
+}
+
+struct Safe_v130_SafeL2$SimulateAndRevertFunctionInputs {
+    address targetContract;
+    bytes calldataPayload;
+}
+
+struct Safe_v130_SafeL2$SwapOwnerFunctionInputs {
+    address prevOwner;
+    address oldOwner;
+    address newOwner;
+}
+
+struct Safe_v130_SafeL2$AddedOwnerEventParams {
+    address owner;
+}
+
+struct Safe_v130_SafeL2$ApproveHashEventParams {
+    bytes32 approvedHash;
+    address owner;
+}
+
+struct Safe_v130_SafeL2$ChangedFallbackHandlerEventParams {
+    address handler;
+}
+
+struct Safe_v130_SafeL2$ChangedGuardEventParams {
+    address guard;
+}
+
+struct Safe_v130_SafeL2$ChangedThresholdEventParams {
+    uint256 threshold;
+}
+
+struct Safe_v130_SafeL2$DisabledModuleEventParams {
+    address module;
+}
+
+struct Safe_v130_SafeL2$EnabledModuleEventParams {
+    address module;
+}
+
+struct Safe_v130_SafeL2$ExecutionFailureEventParams {
+    bytes32 txHash;
+    uint256 payment;
+}
+
+struct Safe_v130_SafeL2$ExecutionFromModuleFailureEventParams {
+    address module;
+}
+
+struct Safe_v130_SafeL2$ExecutionFromModuleSuccessEventParams {
+    address module;
+}
+
+struct Safe_v130_SafeL2$ExecutionSuccessEventParams {
+    bytes32 txHash;
+    uint256 payment;
+}
+
+struct Safe_v130_SafeL2$RemovedOwnerEventParams {
+    address owner;
+}
+
+struct Safe_v130_SafeL2$SafeModuleTransactionEventParams {
+    address module;
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+}
+
+struct Safe_v130_SafeL2$SafeMultiSigTransactionEventParams {
+    address to;
+    uint256 value;
+    bytes data;
+    uint8 operation;
+    uint256 safeTxGas;
+    uint256 baseGas;
+    uint256 gasPrice;
+    address gasToken;
+    address refundReceiver;
+    bytes signatures;
+    bytes additionalInfo;
+}
+
+struct Safe_v130_SafeL2$SafeReceivedEventParams {
+    address sender;
+    uint256 value;
+}
+
+struct Safe_v130_SafeL2$SafeSetupEventParams {
+    address initiator;
+    address[] owners;
+    uint256 threshold;
+    address initializer;
+    address fallbackHandler;
+}
+
+struct Safe_v130_SafeL2$SignMsgEventParams {
+    bytes32 msgHash;
+}
+
+abstract contract Safe_v130_SafeL2$OnAddedOwnerEvent {
+    function Safe_v130_SafeL2$onAddedOwnerEvent(EventContext memory ctx, Safe_v130_SafeL2$AddedOwnerEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnAddedOwnerEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x9465fa0c962cc76958e6373a993326400c1c94f8be2fe3a952adfa7f60b2ea26),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onAddedOwnerEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnApproveHashEvent {
+    function Safe_v130_SafeL2$onApproveHashEvent(EventContext memory ctx, Safe_v130_SafeL2$ApproveHashEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnApproveHashEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0xf2a0eb156472d1440255b0d7c1e19cc07115d1051fe605b0dce69acfec884d9c),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onApproveHashEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnChangedFallbackHandlerEvent {
+    function Safe_v130_SafeL2$onChangedFallbackHandlerEvent(EventContext memory ctx, Safe_v130_SafeL2$ChangedFallbackHandlerEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnChangedFallbackHandlerEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x5ac6c46c93c8d0e53714ba3b53db3e7c046da994313d7ed0d192028bc7c228b0),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onChangedFallbackHandlerEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnChangedGuardEvent {
+    function Safe_v130_SafeL2$onChangedGuardEvent(EventContext memory ctx, Safe_v130_SafeL2$ChangedGuardEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnChangedGuardEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x1151116914515bc0891ff9047a6cb32cf902546f83066499bcf8ba33d2353fa2),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onChangedGuardEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnChangedThresholdEvent {
+    function Safe_v130_SafeL2$onChangedThresholdEvent(EventContext memory ctx, Safe_v130_SafeL2$ChangedThresholdEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnChangedThresholdEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x610f7ff2b304ae8903c3de74c60c6ab1f7d6226b3f52c5161905bb5ad4039c93),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onChangedThresholdEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnDisabledModuleEvent {
+    function Safe_v130_SafeL2$onDisabledModuleEvent(EventContext memory ctx, Safe_v130_SafeL2$DisabledModuleEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnDisabledModuleEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0xaab4fa2b463f581b2b32cb3b7e3b704b9ce37cc209b5fb4d77e593ace4054276),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onDisabledModuleEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnEnabledModuleEvent {
+    function Safe_v130_SafeL2$onEnabledModuleEvent(EventContext memory ctx, Safe_v130_SafeL2$EnabledModuleEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnEnabledModuleEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0xecdf3a3effea5783a3c4c2140e677577666428d44ed9d474a0b3a4c9943f8440),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onEnabledModuleEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnExecutionFailureEvent {
+    function Safe_v130_SafeL2$onExecutionFailureEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionFailureEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnExecutionFailureEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x23428b18acfb3ea64b08dc0c1d296ea9c09702c09083ca5272e64d115b687d23),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onExecutionFailureEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnExecutionFromModuleFailureEvent {
+    function Safe_v130_SafeL2$onExecutionFromModuleFailureEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionFromModuleFailureEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnExecutionFromModuleFailureEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0xacd2c8702804128fdb0db2bb49f6d127dd0181c13fd45dbfe16de0930e2bd375),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onExecutionFromModuleFailureEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnExecutionFromModuleSuccessEvent {
+    function Safe_v130_SafeL2$onExecutionFromModuleSuccessEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionFromModuleSuccessEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnExecutionFromModuleSuccessEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x6895c13664aa4f67288b25d7a21d7aaa34916e355fb9b6fae0a139a9085becb8),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onExecutionFromModuleSuccessEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnExecutionSuccessEvent {
+    function Safe_v130_SafeL2$onExecutionSuccessEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionSuccessEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnExecutionSuccessEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x442e715f626346e8c54381002da614f62bee8d27386535b2521ec8540898556e),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onExecutionSuccessEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnRemovedOwnerEvent {
+    function Safe_v130_SafeL2$onRemovedOwnerEvent(EventContext memory ctx, Safe_v130_SafeL2$RemovedOwnerEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnRemovedOwnerEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0xf8d49fc529812e9a7c5c50e69c20f0dccc0db8fa95c98bc58cc9a4f1c1299eaf),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onRemovedOwnerEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSafeModuleTransactionEvent {
+    function Safe_v130_SafeL2$onSafeModuleTransactionEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeModuleTransactionEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSafeModuleTransactionEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0xb648d3644f584ed1c2232d53c46d87e693586486ad0d1175f8656013110b714e),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSafeModuleTransactionEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSafeMultiSigTransactionEvent {
+    function Safe_v130_SafeL2$onSafeMultiSigTransactionEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeMultiSigTransactionEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSafeMultiSigTransactionEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x66753cd2356569ee081232e3be8909b950e0a76c1f8460c3a5e3c2be32b11bed),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSafeMultiSigTransactionEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSafeReceivedEvent {
+    function Safe_v130_SafeL2$onSafeReceivedEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeReceivedEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSafeReceivedEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x3d0ce9bfc3ed7d6862dbb28b2dea94561fe714a1b4d019aa8af39730d1ad7c3d),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSafeReceivedEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSafeSetupEvent {
+    function Safe_v130_SafeL2$onSafeSetupEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeSetupEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSafeSetupEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0x141df868a6331af528e38c83b7aa03edc19be66e37ae67f9285bf4f8e3c6a1a8),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSafeSetupEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSignMsgEvent {
+    function Safe_v130_SafeL2$onSignMsgEvent(EventContext memory ctx, Safe_v130_SafeL2$SignMsgEventParams memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSignMsgEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes32(0xe7f4675038f4f6034dfcbbb24c4dc08e4ebf10eb9d257d3d02c0f38d122ac6e4),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSignMsgEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnVersionFunction {
+    function Safe_v130_SafeL2$onVersionFunction(FunctionContext memory ctx, Safe_v130_SafeL2$VersionFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnVersionFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xffa1ad74),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onVersionFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreVersionFunction {
+    function Safe_v130_SafeL2$preVersionFunction(PreFunctionContext memory ctx) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreVersionFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xffa1ad74),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preVersionFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnAddOwnerWithThresholdFunction {
+    function Safe_v130_SafeL2$onAddOwnerWithThresholdFunction(FunctionContext memory ctx, Safe_v130_SafeL2$AddOwnerWithThresholdFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnAddOwnerWithThresholdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x0d582f13),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onAddOwnerWithThresholdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreAddOwnerWithThresholdFunction {
+    function Safe_v130_SafeL2$preAddOwnerWithThresholdFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$AddOwnerWithThresholdFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreAddOwnerWithThresholdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x0d582f13),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preAddOwnerWithThresholdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnApproveHashFunction {
+    function Safe_v130_SafeL2$onApproveHashFunction(FunctionContext memory ctx, Safe_v130_SafeL2$ApproveHashFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnApproveHashFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xd4d9bdcd),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onApproveHashFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreApproveHashFunction {
+    function Safe_v130_SafeL2$preApproveHashFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$ApproveHashFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreApproveHashFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xd4d9bdcd),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preApproveHashFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnApprovedHashesFunction {
+    function Safe_v130_SafeL2$onApprovedHashesFunction(FunctionContext memory ctx, Safe_v130_SafeL2$ApprovedHashesFunctionInputs memory inputs, Safe_v130_SafeL2$ApprovedHashesFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnApprovedHashesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x7d832974),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onApprovedHashesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreApprovedHashesFunction {
+    function Safe_v130_SafeL2$preApprovedHashesFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$ApprovedHashesFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreApprovedHashesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x7d832974),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preApprovedHashesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnChangeThresholdFunction {
+    function Safe_v130_SafeL2$onChangeThresholdFunction(FunctionContext memory ctx, Safe_v130_SafeL2$ChangeThresholdFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnChangeThresholdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x694e80c3),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onChangeThresholdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreChangeThresholdFunction {
+    function Safe_v130_SafeL2$preChangeThresholdFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$ChangeThresholdFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreChangeThresholdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x694e80c3),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preChangeThresholdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnCheckNSignaturesFunction {
+    function Safe_v130_SafeL2$onCheckNSignaturesFunction(FunctionContext memory ctx, Safe_v130_SafeL2$CheckNSignaturesFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnCheckNSignaturesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x12fb68e0),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onCheckNSignaturesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreCheckNSignaturesFunction {
+    function Safe_v130_SafeL2$preCheckNSignaturesFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$CheckNSignaturesFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreCheckNSignaturesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x12fb68e0),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preCheckNSignaturesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnCheckSignaturesFunction {
+    function Safe_v130_SafeL2$onCheckSignaturesFunction(FunctionContext memory ctx, Safe_v130_SafeL2$CheckSignaturesFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnCheckSignaturesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x934f3a11),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onCheckSignaturesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreCheckSignaturesFunction {
+    function Safe_v130_SafeL2$preCheckSignaturesFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$CheckSignaturesFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreCheckSignaturesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x934f3a11),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preCheckSignaturesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnDisableModuleFunction {
+    function Safe_v130_SafeL2$onDisableModuleFunction(FunctionContext memory ctx, Safe_v130_SafeL2$DisableModuleFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnDisableModuleFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe009cfde),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onDisableModuleFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreDisableModuleFunction {
+    function Safe_v130_SafeL2$preDisableModuleFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$DisableModuleFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreDisableModuleFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe009cfde),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preDisableModuleFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnDomainSeparatorFunction {
+    function Safe_v130_SafeL2$onDomainSeparatorFunction(FunctionContext memory ctx, Safe_v130_SafeL2$DomainSeparatorFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnDomainSeparatorFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xf698da25),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onDomainSeparatorFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreDomainSeparatorFunction {
+    function Safe_v130_SafeL2$preDomainSeparatorFunction(PreFunctionContext memory ctx) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreDomainSeparatorFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xf698da25),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preDomainSeparatorFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnEnableModuleFunction {
+    function Safe_v130_SafeL2$onEnableModuleFunction(FunctionContext memory ctx, Safe_v130_SafeL2$EnableModuleFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnEnableModuleFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x610b5925),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onEnableModuleFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreEnableModuleFunction {
+    function Safe_v130_SafeL2$preEnableModuleFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$EnableModuleFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreEnableModuleFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x610b5925),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preEnableModuleFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnEncodeTransactionDataFunction {
+    function Safe_v130_SafeL2$onEncodeTransactionDataFunction(FunctionContext memory ctx, Safe_v130_SafeL2$EncodeTransactionDataFunctionInputs memory inputs, Safe_v130_SafeL2$EncodeTransactionDataFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnEncodeTransactionDataFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe86637db),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onEncodeTransactionDataFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreEncodeTransactionDataFunction {
+    function Safe_v130_SafeL2$preEncodeTransactionDataFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$EncodeTransactionDataFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreEncodeTransactionDataFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe86637db),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preEncodeTransactionDataFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnExecTransactionFunction {
+    function Safe_v130_SafeL2$onExecTransactionFunction(FunctionContext memory ctx, Safe_v130_SafeL2$ExecTransactionFunctionInputs memory inputs, Safe_v130_SafeL2$ExecTransactionFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnExecTransactionFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x6a761202),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onExecTransactionFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreExecTransactionFunction {
+    function Safe_v130_SafeL2$preExecTransactionFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$ExecTransactionFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreExecTransactionFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x6a761202),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preExecTransactionFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnExecTransactionFromModuleFunction {
+    function Safe_v130_SafeL2$onExecTransactionFromModuleFunction(FunctionContext memory ctx, Safe_v130_SafeL2$ExecTransactionFromModuleFunctionInputs memory inputs, Safe_v130_SafeL2$ExecTransactionFromModuleFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnExecTransactionFromModuleFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x468721a7),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onExecTransactionFromModuleFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreExecTransactionFromModuleFunction {
+    function Safe_v130_SafeL2$preExecTransactionFromModuleFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$ExecTransactionFromModuleFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreExecTransactionFromModuleFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x468721a7),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preExecTransactionFromModuleFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnExecTransactionFromModuleReturnDataFunction {
+    function Safe_v130_SafeL2$onExecTransactionFromModuleReturnDataFunction(FunctionContext memory ctx, Safe_v130_SafeL2$ExecTransactionFromModuleReturnDataFunctionInputs memory inputs, Safe_v130_SafeL2$ExecTransactionFromModuleReturnDataFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnExecTransactionFromModuleReturnDataFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x5229073f),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onExecTransactionFromModuleReturnDataFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreExecTransactionFromModuleReturnDataFunction {
+    function Safe_v130_SafeL2$preExecTransactionFromModuleReturnDataFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$ExecTransactionFromModuleReturnDataFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreExecTransactionFromModuleReturnDataFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x5229073f),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preExecTransactionFromModuleReturnDataFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnGetChainIdFunction {
+    function Safe_v130_SafeL2$onGetChainIdFunction(FunctionContext memory ctx, Safe_v130_SafeL2$GetChainIdFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnGetChainIdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x3408e470),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onGetChainIdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreGetChainIdFunction {
+    function Safe_v130_SafeL2$preGetChainIdFunction(PreFunctionContext memory ctx) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreGetChainIdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x3408e470),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preGetChainIdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnGetModulesPaginatedFunction {
+    function Safe_v130_SafeL2$onGetModulesPaginatedFunction(FunctionContext memory ctx, Safe_v130_SafeL2$GetModulesPaginatedFunctionInputs memory inputs, Safe_v130_SafeL2$GetModulesPaginatedFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnGetModulesPaginatedFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xcc2f8452),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onGetModulesPaginatedFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreGetModulesPaginatedFunction {
+    function Safe_v130_SafeL2$preGetModulesPaginatedFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$GetModulesPaginatedFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreGetModulesPaginatedFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xcc2f8452),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preGetModulesPaginatedFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnGetOwnersFunction {
+    function Safe_v130_SafeL2$onGetOwnersFunction(FunctionContext memory ctx, Safe_v130_SafeL2$GetOwnersFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnGetOwnersFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xa0e67e2b),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onGetOwnersFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreGetOwnersFunction {
+    function Safe_v130_SafeL2$preGetOwnersFunction(PreFunctionContext memory ctx) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreGetOwnersFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xa0e67e2b),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preGetOwnersFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnGetStorageAtFunction {
+    function Safe_v130_SafeL2$onGetStorageAtFunction(FunctionContext memory ctx, Safe_v130_SafeL2$GetStorageAtFunctionInputs memory inputs, Safe_v130_SafeL2$GetStorageAtFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnGetStorageAtFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x5624b25b),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onGetStorageAtFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreGetStorageAtFunction {
+    function Safe_v130_SafeL2$preGetStorageAtFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$GetStorageAtFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreGetStorageAtFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x5624b25b),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preGetStorageAtFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnGetThresholdFunction {
+    function Safe_v130_SafeL2$onGetThresholdFunction(FunctionContext memory ctx, Safe_v130_SafeL2$GetThresholdFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnGetThresholdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe75235b8),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onGetThresholdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreGetThresholdFunction {
+    function Safe_v130_SafeL2$preGetThresholdFunction(PreFunctionContext memory ctx) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreGetThresholdFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe75235b8),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preGetThresholdFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnGetTransactionHashFunction {
+    function Safe_v130_SafeL2$onGetTransactionHashFunction(FunctionContext memory ctx, Safe_v130_SafeL2$GetTransactionHashFunctionInputs memory inputs, Safe_v130_SafeL2$GetTransactionHashFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnGetTransactionHashFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xd8d11f78),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onGetTransactionHashFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreGetTransactionHashFunction {
+    function Safe_v130_SafeL2$preGetTransactionHashFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$GetTransactionHashFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreGetTransactionHashFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xd8d11f78),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preGetTransactionHashFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnIsModuleEnabledFunction {
+    function Safe_v130_SafeL2$onIsModuleEnabledFunction(FunctionContext memory ctx, Safe_v130_SafeL2$IsModuleEnabledFunctionInputs memory inputs, Safe_v130_SafeL2$IsModuleEnabledFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnIsModuleEnabledFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x2d9ad53d),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onIsModuleEnabledFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreIsModuleEnabledFunction {
+    function Safe_v130_SafeL2$preIsModuleEnabledFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$IsModuleEnabledFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreIsModuleEnabledFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x2d9ad53d),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preIsModuleEnabledFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnIsOwnerFunction {
+    function Safe_v130_SafeL2$onIsOwnerFunction(FunctionContext memory ctx, Safe_v130_SafeL2$IsOwnerFunctionInputs memory inputs, Safe_v130_SafeL2$IsOwnerFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnIsOwnerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x2f54bf6e),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onIsOwnerFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreIsOwnerFunction {
+    function Safe_v130_SafeL2$preIsOwnerFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$IsOwnerFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreIsOwnerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x2f54bf6e),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preIsOwnerFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnNonceFunction {
+    function Safe_v130_SafeL2$onNonceFunction(FunctionContext memory ctx, Safe_v130_SafeL2$NonceFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnNonceFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xaffed0e0),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onNonceFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreNonceFunction {
+    function Safe_v130_SafeL2$preNonceFunction(PreFunctionContext memory ctx) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreNonceFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xaffed0e0),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preNonceFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnRemoveOwnerFunction {
+    function Safe_v130_SafeL2$onRemoveOwnerFunction(FunctionContext memory ctx, Safe_v130_SafeL2$RemoveOwnerFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnRemoveOwnerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xf8dc5dd9),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onRemoveOwnerFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreRemoveOwnerFunction {
+    function Safe_v130_SafeL2$preRemoveOwnerFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$RemoveOwnerFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreRemoveOwnerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xf8dc5dd9),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preRemoveOwnerFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnRequiredTxGasFunction {
+    function Safe_v130_SafeL2$onRequiredTxGasFunction(FunctionContext memory ctx, Safe_v130_SafeL2$RequiredTxGasFunctionInputs memory inputs, Safe_v130_SafeL2$RequiredTxGasFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnRequiredTxGasFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xc4ca3a9c),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onRequiredTxGasFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreRequiredTxGasFunction {
+    function Safe_v130_SafeL2$preRequiredTxGasFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$RequiredTxGasFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreRequiredTxGasFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xc4ca3a9c),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preRequiredTxGasFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSetFallbackHandlerFunction {
+    function Safe_v130_SafeL2$onSetFallbackHandlerFunction(FunctionContext memory ctx, Safe_v130_SafeL2$SetFallbackHandlerFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSetFallbackHandlerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xf08a0323),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSetFallbackHandlerFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreSetFallbackHandlerFunction {
+    function Safe_v130_SafeL2$preSetFallbackHandlerFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$SetFallbackHandlerFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreSetFallbackHandlerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xf08a0323),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preSetFallbackHandlerFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSetGuardFunction {
+    function Safe_v130_SafeL2$onSetGuardFunction(FunctionContext memory ctx, Safe_v130_SafeL2$SetGuardFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSetGuardFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe19a9dd9),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSetGuardFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreSetGuardFunction {
+    function Safe_v130_SafeL2$preSetGuardFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$SetGuardFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreSetGuardFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe19a9dd9),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preSetGuardFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSetupFunction {
+    function Safe_v130_SafeL2$onSetupFunction(FunctionContext memory ctx, Safe_v130_SafeL2$SetupFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSetupFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xb63e800d),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSetupFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreSetupFunction {
+    function Safe_v130_SafeL2$preSetupFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$SetupFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreSetupFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xb63e800d),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preSetupFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSignedMessagesFunction {
+    function Safe_v130_SafeL2$onSignedMessagesFunction(FunctionContext memory ctx, Safe_v130_SafeL2$SignedMessagesFunctionInputs memory inputs, Safe_v130_SafeL2$SignedMessagesFunctionOutputs memory outputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSignedMessagesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x5ae6bd37),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSignedMessagesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreSignedMessagesFunction {
+    function Safe_v130_SafeL2$preSignedMessagesFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$SignedMessagesFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreSignedMessagesFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0x5ae6bd37),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preSignedMessagesFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSimulateAndRevertFunction {
+    function Safe_v130_SafeL2$onSimulateAndRevertFunction(FunctionContext memory ctx, Safe_v130_SafeL2$SimulateAndRevertFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSimulateAndRevertFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xb4faba09),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSimulateAndRevertFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreSimulateAndRevertFunction {
+    function Safe_v130_SafeL2$preSimulateAndRevertFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$SimulateAndRevertFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreSimulateAndRevertFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xb4faba09),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preSimulateAndRevertFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$OnSwapOwnerFunction {
+    function Safe_v130_SafeL2$onSwapOwnerFunction(FunctionContext memory ctx, Safe_v130_SafeL2$SwapOwnerFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerOnSwapOwnerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe318b52b),
+            triggerType: TriggerType.FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$onSwapOwnerFunction.selector
+        });
+    }
+}
+
+abstract contract Safe_v130_SafeL2$PreSwapOwnerFunction {
+    function Safe_v130_SafeL2$preSwapOwnerFunction(PreFunctionContext memory ctx, Safe_v130_SafeL2$SwapOwnerFunctionInputs memory inputs) virtual external;
+
+    function Safe_v130_SafeL2$triggerPreSwapOwnerFunction() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v130_SafeL2",
+            selector: bytes4(0xe318b52b),
+            triggerType: TriggerType.PRE_FUNCTION,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v130_SafeL2$preSwapOwnerFunction.selector
+        });
+    }
+}
+
+contract Safe_v130_SafeL2$EmitAllEvents is
+  Safe_v130_SafeL2$OnAddedOwnerEvent,
+Safe_v130_SafeL2$OnApproveHashEvent,
+Safe_v130_SafeL2$OnChangedFallbackHandlerEvent,
+Safe_v130_SafeL2$OnChangedGuardEvent,
+Safe_v130_SafeL2$OnChangedThresholdEvent,
+Safe_v130_SafeL2$OnDisabledModuleEvent,
+Safe_v130_SafeL2$OnEnabledModuleEvent,
+Safe_v130_SafeL2$OnExecutionFailureEvent,
+Safe_v130_SafeL2$OnExecutionFromModuleFailureEvent,
+Safe_v130_SafeL2$OnExecutionFromModuleSuccessEvent,
+Safe_v130_SafeL2$OnExecutionSuccessEvent,
+Safe_v130_SafeL2$OnRemovedOwnerEvent,
+Safe_v130_SafeL2$OnSafeModuleTransactionEvent,
+Safe_v130_SafeL2$OnSafeMultiSigTransactionEvent,
+Safe_v130_SafeL2$OnSafeReceivedEvent,
+Safe_v130_SafeL2$OnSafeSetupEvent,
+Safe_v130_SafeL2$OnSignMsgEvent
+{
+  event AddedOwner(address owner);
+event ApproveHash(bytes32 approvedHash, address owner);
+event ChangedFallbackHandler(address handler);
+event ChangedGuard(address guard);
+event ChangedThreshold(uint256 threshold);
+event DisabledModule(address module);
+event EnabledModule(address module);
+event ExecutionFailure(bytes32 txHash, uint256 payment);
+event ExecutionFromModuleFailure(address module);
+event ExecutionFromModuleSuccess(address module);
+event ExecutionSuccess(bytes32 txHash, uint256 payment);
+event RemovedOwner(address owner);
+event SafeModuleTransaction(address module, address to, uint256 value, bytes data, uint8 operation);
+event SafeMultiSigTransaction(address to, uint256 value, bytes data, uint8 operation, uint256 safeTxGas, uint256 baseGas, uint256 gasPrice, address gasToken, address refundReceiver, bytes signatures, bytes additionalInfo);
+event SafeReceived(address sender, uint256 value);
+event SafeSetup(address initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler);
+event SignMsg(bytes32 msgHash);
+
+  function Safe_v130_SafeL2$onAddedOwnerEvent(EventContext memory ctx, Safe_v130_SafeL2$AddedOwnerEventParams memory inputs) virtual external override {
+    emit AddedOwner(inputs.owner);
+  }
+function Safe_v130_SafeL2$onApproveHashEvent(EventContext memory ctx, Safe_v130_SafeL2$ApproveHashEventParams memory inputs) virtual external override {
+    emit ApproveHash(inputs.approvedHash, inputs.owner);
+  }
+function Safe_v130_SafeL2$onChangedFallbackHandlerEvent(EventContext memory ctx, Safe_v130_SafeL2$ChangedFallbackHandlerEventParams memory inputs) virtual external override {
+    emit ChangedFallbackHandler(inputs.handler);
+  }
+function Safe_v130_SafeL2$onChangedGuardEvent(EventContext memory ctx, Safe_v130_SafeL2$ChangedGuardEventParams memory inputs) virtual external override {
+    emit ChangedGuard(inputs.guard);
+  }
+function Safe_v130_SafeL2$onChangedThresholdEvent(EventContext memory ctx, Safe_v130_SafeL2$ChangedThresholdEventParams memory inputs) virtual external override {
+    emit ChangedThreshold(inputs.threshold);
+  }
+function Safe_v130_SafeL2$onDisabledModuleEvent(EventContext memory ctx, Safe_v130_SafeL2$DisabledModuleEventParams memory inputs) virtual external override {
+    emit DisabledModule(inputs.module);
+  }
+function Safe_v130_SafeL2$onEnabledModuleEvent(EventContext memory ctx, Safe_v130_SafeL2$EnabledModuleEventParams memory inputs) virtual external override {
+    emit EnabledModule(inputs.module);
+  }
+function Safe_v130_SafeL2$onExecutionFailureEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionFailureEventParams memory inputs) virtual external override {
+    emit ExecutionFailure(inputs.txHash, inputs.payment);
+  }
+function Safe_v130_SafeL2$onExecutionFromModuleFailureEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionFromModuleFailureEventParams memory inputs) virtual external override {
+    emit ExecutionFromModuleFailure(inputs.module);
+  }
+function Safe_v130_SafeL2$onExecutionFromModuleSuccessEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionFromModuleSuccessEventParams memory inputs) virtual external override {
+    emit ExecutionFromModuleSuccess(inputs.module);
+  }
+function Safe_v130_SafeL2$onExecutionSuccessEvent(EventContext memory ctx, Safe_v130_SafeL2$ExecutionSuccessEventParams memory inputs) virtual external override {
+    emit ExecutionSuccess(inputs.txHash, inputs.payment);
+  }
+function Safe_v130_SafeL2$onRemovedOwnerEvent(EventContext memory ctx, Safe_v130_SafeL2$RemovedOwnerEventParams memory inputs) virtual external override {
+    emit RemovedOwner(inputs.owner);
+  }
+function Safe_v130_SafeL2$onSafeModuleTransactionEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeModuleTransactionEventParams memory inputs) virtual external override {
+    emit SafeModuleTransaction(inputs.module, inputs.to, inputs.value, inputs.data, inputs.operation);
+  }
+function Safe_v130_SafeL2$onSafeMultiSigTransactionEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeMultiSigTransactionEventParams memory inputs) virtual external override {
+    emit SafeMultiSigTransaction(inputs.to, inputs.value, inputs.data, inputs.operation, inputs.safeTxGas, inputs.baseGas, inputs.gasPrice, inputs.gasToken, inputs.refundReceiver, inputs.signatures, inputs.additionalInfo);
+  }
+function Safe_v130_SafeL2$onSafeReceivedEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeReceivedEventParams memory inputs) virtual external override {
+    emit SafeReceived(inputs.sender, inputs.value);
+  }
+function Safe_v130_SafeL2$onSafeSetupEvent(EventContext memory ctx, Safe_v130_SafeL2$SafeSetupEventParams memory inputs) virtual external override {
+    emit SafeSetup(inputs.initiator, inputs.owners, inputs.threshold, inputs.initializer, inputs.fallbackHandler);
+  }
+function Safe_v130_SafeL2$onSignMsgEvent(EventContext memory ctx, Safe_v130_SafeL2$SignMsgEventParams memory inputs) virtual external override {
+    emit SignMsg(inputs.msgHash);
+  }
+
+  function allTriggers() view external returns (Trigger[] memory) {
+    Trigger[] memory triggers = new Trigger[](17);
+    triggers[0] = this.Safe_v130_SafeL2$triggerOnAddedOwnerEvent();
+    triggers[1] = this.Safe_v130_SafeL2$triggerOnApproveHashEvent();
+    triggers[2] = this.Safe_v130_SafeL2$triggerOnChangedFallbackHandlerEvent();
+    triggers[3] = this.Safe_v130_SafeL2$triggerOnChangedGuardEvent();
+    triggers[4] = this.Safe_v130_SafeL2$triggerOnChangedThresholdEvent();
+    triggers[5] = this.Safe_v130_SafeL2$triggerOnDisabledModuleEvent();
+    triggers[6] = this.Safe_v130_SafeL2$triggerOnEnabledModuleEvent();
+    triggers[7] = this.Safe_v130_SafeL2$triggerOnExecutionFailureEvent();
+    triggers[8] = this.Safe_v130_SafeL2$triggerOnExecutionFromModuleFailureEvent();
+    triggers[9] = this.Safe_v130_SafeL2$triggerOnExecutionFromModuleSuccessEvent();
+    triggers[10] = this.Safe_v130_SafeL2$triggerOnExecutionSuccessEvent();
+    triggers[11] = this.Safe_v130_SafeL2$triggerOnRemovedOwnerEvent();
+    triggers[12] = this.Safe_v130_SafeL2$triggerOnSafeModuleTransactionEvent();
+    triggers[13] = this.Safe_v130_SafeL2$triggerOnSafeMultiSigTransactionEvent();
+    triggers[14] = this.Safe_v130_SafeL2$triggerOnSafeReceivedEvent();
+    triggers[15] = this.Safe_v130_SafeL2$triggerOnSafeSetupEvent();
+    triggers[16] = this.Safe_v130_SafeL2$triggerOnSignMsgEvent();
+    return triggers;
+  }
+}
