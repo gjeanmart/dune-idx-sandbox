@@ -4,5 +4,6 @@ import * as t from "drizzle-orm/pg-core";
 import { db, types } from "@duneanalytics/sim-idx";
 
 export const proxyCreation = table("proxy_creation", {
+  chainId: db.uint256('chain_id'),
   proxy: db.address('proxy'),
 })
