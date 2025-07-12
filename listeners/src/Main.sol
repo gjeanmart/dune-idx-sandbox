@@ -82,7 +82,7 @@ contract Triggers is BaseTriggers {
                     );
                 } else if (version == Version.V130_EIP155) {
                     addTrigger(
-                        chainContract(chain, FACTORY_V130_CANONICAL),
+                        chainContract(chain, FACTORY_V130_EIP155),
                         listener
                             .Safe_v130_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
@@ -107,30 +107,6 @@ contract Triggers is BaseTriggers {
                 }
             }
         }
-        // addTrigger(
-        //     chainContract(Chains.Ethereum, FACTORY_V100),
-        //     listener.Safe_v100_SafeProxyFactory$triggerOnProxyCreationEvent()
-        // );
-        // addTrigger(
-        //     chainContract(Chains.Ethereum, FACTORY_V111),
-        //     listener.Safe_v111_SafeProxyFactory$triggerOnProxyCreationEvent()
-        // );
-        // addTrigger(
-        //     chainContract(Chains.Ethereum, FACTORY_V130_CANONICAL),
-        //     listener.Safe_v130_SafeProxyFactory$triggerOnProxyCreationEvent()
-        // );
-        // addTrigger(
-        //     chainContract(Chains.Ethereum, FACTORY_V130_EIP155),
-        //     listener.Safe_v141_SafeProxyFactory$triggerOnProxyCreationEvent()
-        // );
-        // addTrigger(
-        //     chainContract(Chains.Ethereum, FACTORY_V141),
-        //     listener.Safe_v150_SafeProxyFactory$triggerOnProxyCreationEvent()
-        // );
-        // addTrigger(
-        //     chainContract(Chains.Ethereum, FACTORY_V150),
-        //     listener.Safe_v150_SafeProxyFactory$triggerOnProxyCreationEvent()
-        // );
     }
 }
 
@@ -141,40 +117,40 @@ contract Listener is
     Safe_v141_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v150_SafeProxyFactory$OnProxyCreationEvent
 {
-    event ProxyCreation(uint256 chainId, address proxy);
+    event ProxyCreation(uint256 chainId, address proxy, string version);
 
     function Safe_v100_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v100_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override(Safe_v100_SafeProxyFactory$OnProxyCreationEvent) {
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy);
+        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.0.0");
     }
 
     function Safe_v111_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v111_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override(Safe_v111_SafeProxyFactory$OnProxyCreationEvent) {
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy);
+        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.1.1");
     }
 
     function Safe_v130_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v130_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override(Safe_v130_SafeProxyFactory$OnProxyCreationEvent) {
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy);
+        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.3.0");
     }
 
     function Safe_v141_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v141_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override(Safe_v141_SafeProxyFactory$OnProxyCreationEvent) {
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy);
+        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.4.1");
     }
 
     function Safe_v150_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v150_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override(Safe_v150_SafeProxyFactory$OnProxyCreationEvent) {
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy);
+        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.5.0");
     }
 }
