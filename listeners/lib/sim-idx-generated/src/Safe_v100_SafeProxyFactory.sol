@@ -39,127 +39,127 @@ struct Safe_v100_SafeProxyFactory$ProxyCreationEventParams {
 }
 
 abstract contract Safe_v100_SafeProxyFactory$OnProxyCreationEvent {
-    function onProxyCreationEvent(EventContext memory ctx, Safe_v100_SafeProxyFactory$ProxyCreationEventParams memory inputs) virtual external;
+    function Safe_v100_SafeProxyFactory$onProxyCreationEvent(EventContext memory ctx, Safe_v100_SafeProxyFactory$ProxyCreationEventParams memory inputs) virtual external;
 
-    function triggerOnProxyCreationEvent() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerOnProxyCreationEvent() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes32(0xa38789425dbeee0239e16ff2d2567e31720127fbc6430758c1a4efc6aef29f80),
             triggerType: TriggerType.EVENT,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.onProxyCreationEvent.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$onProxyCreationEvent.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$OnCreateProxyFunction {
-    function onCreateProxyFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyFunctionInputs memory inputs, Safe_v100_SafeProxyFactory$CreateProxyFunctionOutputs memory outputs) virtual external;
+    function Safe_v100_SafeProxyFactory$onCreateProxyFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyFunctionInputs memory inputs, Safe_v100_SafeProxyFactory$CreateProxyFunctionOutputs memory outputs) virtual external;
 
-    function triggerOnCreateProxyFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerOnCreateProxyFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0x61b69abd),
             triggerType: TriggerType.FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.onCreateProxyFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$onCreateProxyFunction.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$PreCreateProxyFunction {
-    function preCreateProxyFunction(PreFunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyFunctionInputs memory inputs) virtual external;
+    function Safe_v100_SafeProxyFactory$preCreateProxyFunction(PreFunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyFunctionInputs memory inputs) virtual external;
 
-    function triggerPreCreateProxyFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerPreCreateProxyFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0x61b69abd),
             triggerType: TriggerType.PRE_FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.preCreateProxyFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$preCreateProxyFunction.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$OnCreateProxyWithNonceFunction {
-    function onCreateProxyWithNonceFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyWithNonceFunctionInputs memory inputs, Safe_v100_SafeProxyFactory$CreateProxyWithNonceFunctionOutputs memory outputs) virtual external;
+    function Safe_v100_SafeProxyFactory$onCreateProxyWithNonceFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyWithNonceFunctionInputs memory inputs, Safe_v100_SafeProxyFactory$CreateProxyWithNonceFunctionOutputs memory outputs) virtual external;
 
-    function triggerOnCreateProxyWithNonceFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerOnCreateProxyWithNonceFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0x1688f0b9),
             triggerType: TriggerType.FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.onCreateProxyWithNonceFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$onCreateProxyWithNonceFunction.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$PreCreateProxyWithNonceFunction {
-    function preCreateProxyWithNonceFunction(PreFunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyWithNonceFunctionInputs memory inputs) virtual external;
+    function Safe_v100_SafeProxyFactory$preCreateProxyWithNonceFunction(PreFunctionContext memory ctx, Safe_v100_SafeProxyFactory$CreateProxyWithNonceFunctionInputs memory inputs) virtual external;
 
-    function triggerPreCreateProxyWithNonceFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerPreCreateProxyWithNonceFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0x1688f0b9),
             triggerType: TriggerType.PRE_FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.preCreateProxyWithNonceFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$preCreateProxyWithNonceFunction.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$OnProxyCreationCodeFunction {
-    function onProxyCreationCodeFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$ProxyCreationCodeFunctionOutputs memory outputs) virtual external;
+    function Safe_v100_SafeProxyFactory$onProxyCreationCodeFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$ProxyCreationCodeFunctionOutputs memory outputs) virtual external;
 
-    function triggerOnProxyCreationCodeFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerOnProxyCreationCodeFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0x53e5d935),
             triggerType: TriggerType.FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.onProxyCreationCodeFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$onProxyCreationCodeFunction.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$PreProxyCreationCodeFunction {
-    function preProxyCreationCodeFunction(PreFunctionContext memory ctx) virtual external;
+    function Safe_v100_SafeProxyFactory$preProxyCreationCodeFunction(PreFunctionContext memory ctx) virtual external;
 
-    function triggerPreProxyCreationCodeFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerPreProxyCreationCodeFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0x53e5d935),
             triggerType: TriggerType.PRE_FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.preProxyCreationCodeFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$preProxyCreationCodeFunction.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$OnProxyRuntimeCodeFunction {
-    function onProxyRuntimeCodeFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$ProxyRuntimeCodeFunctionOutputs memory outputs) virtual external;
+    function Safe_v100_SafeProxyFactory$onProxyRuntimeCodeFunction(FunctionContext memory ctx, Safe_v100_SafeProxyFactory$ProxyRuntimeCodeFunctionOutputs memory outputs) virtual external;
 
-    function triggerOnProxyRuntimeCodeFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerOnProxyRuntimeCodeFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0xaddacc0f),
             triggerType: TriggerType.FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.onProxyRuntimeCodeFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$onProxyRuntimeCodeFunction.selector
         });
     }
 }
 
 abstract contract Safe_v100_SafeProxyFactory$PreProxyRuntimeCodeFunction {
-    function preProxyRuntimeCodeFunction(PreFunctionContext memory ctx) virtual external;
+    function Safe_v100_SafeProxyFactory$preProxyRuntimeCodeFunction(PreFunctionContext memory ctx) virtual external;
 
-    function triggerPreProxyRuntimeCodeFunction() view external returns (Trigger memory) {
+    function Safe_v100_SafeProxyFactory$triggerPreProxyRuntimeCodeFunction() view external returns (Trigger memory) {
         return Trigger({
             abiName: "Safe_v100_SafeProxyFactory",
             selector: bytes4(0xaddacc0f),
             triggerType: TriggerType.PRE_FUNCTION,
             listenerCodehash: address(this).codehash,
-            handlerSelector: this.preProxyRuntimeCodeFunction.selector
+            handlerSelector: this.Safe_v100_SafeProxyFactory$preProxyRuntimeCodeFunction.selector
         });
     }
 }
@@ -169,13 +169,13 @@ contract Safe_v100_SafeProxyFactory$EmitAllEvents is
 {
   event ProxyCreation(address proxy);
 
-  function onProxyCreationEvent(EventContext memory ctx, Safe_v100_SafeProxyFactory$ProxyCreationEventParams memory inputs) virtual external override {
+  function Safe_v100_SafeProxyFactory$onProxyCreationEvent(EventContext memory ctx, Safe_v100_SafeProxyFactory$ProxyCreationEventParams memory inputs) virtual external override {
     emit ProxyCreation(inputs.proxy);
   }
 
   function allTriggers() view external returns (Trigger[] memory) {
     Trigger[] memory triggers = new Trigger[](1);
-    triggers[0] = this.triggerOnProxyCreationEvent();
+    triggers[0] = this.Safe_v100_SafeProxyFactory$triggerOnProxyCreationEvent();
     return triggers;
   }
 }
