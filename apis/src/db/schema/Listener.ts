@@ -16,4 +16,5 @@ export const safeSetup = table("safe_setup", {
   owner: db.address('owner'),
   threshold: db.uint256('threshold'),
   fallbackHandler: db.address('fallback_handler'),
+  isOfficial: t.boolean('is_official'),
 })

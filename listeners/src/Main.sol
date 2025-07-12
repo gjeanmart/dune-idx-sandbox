@@ -16,14 +16,14 @@ contract Triggers is BaseTriggers {
     }
 
     // Factory addresses for each version
-    address constant FACTORY_V100 = 0x1F98431c8aD98523631AE4a59f267346ea31F984;
+    address constant FACTORY_V100 = 0x12302fE9c02ff50939BaAaaf415fc226C078613C;
     address constant FACTORY_V111 = 0x76E2cFc1F5Fa8F6a5b3fC4c8F4788F0116861F9B;
     address constant FACTORY_V130_CANONICAL =
         0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2;
     address constant FACTORY_V130_EIP155 =
-        0x1F98431c8aD98523631AE4a59f267346ea31F984;
-    address constant FACTORY_V141 = 0xC22834581EbC8527d974F8a1c97E1bEA4EF910BC;
-    address constant FACTORY_V150 = 0x4e1DCf7AD4e460CfD30791CCC4F9c8a4f820ec67;
+        0xC22834581EbC8527d974F8a1c97E1bEA4EF910BC;
+    address constant FACTORY_V141 = 0x4e1DCf7AD4e460CfD30791CCC4F9c8a4f820ec67;
+    address constant FACTORY_V150 = 0x14F2982D601c9458F93bd70B218933A6f8165e7b;
 
     // mapping of chainId => supported versions as enum
     mapping(Chains chain => Version[] versions) public availableVersions;
@@ -86,8 +86,8 @@ contract Triggers is BaseTriggers {
                             .Safe_v130_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
                     addTrigger(
-                        chainAbi(chain, Safe_v130_Safe$Abi()),
-                        listener.Safe_v130_Safe$triggerOnSafeSetupEvent()
+                        chainAbi(chain, Safe_v130_SafeL2$Abi()),
+                        listener.Safe_v130_SafeL2$triggerOnSafeSetupEvent()
                     );
                 } else if (version == Version.V130_EIP155) {
                     addTrigger(
@@ -96,8 +96,8 @@ contract Triggers is BaseTriggers {
                             .Safe_v130_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
                     addTrigger(
-                        chainAbi(chain, Safe_v130_Safe$Abi()),
-                        listener.Safe_v130_Safe$triggerOnSafeSetupEvent()
+                        chainAbi(chain, Safe_v130_SafeL2$Abi()),
+                        listener.Safe_v130_SafeL2$triggerOnSafeSetupEvent()
                     );
                 } else if (version == Version.V141) {
                     addTrigger(
@@ -106,8 +106,14 @@ contract Triggers is BaseTriggers {
                             .Safe_v141_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
                     addTrigger(
-                        chainAbi(chain, Safe_v141_Safe$Abi()),
-                        listener.Safe_v141_Safe$triggerOnSafeSetupEvent()
+                        // WORKS!!!
+                        // chainContract(
+                        //     chain,
+                        //     0x1E16C4aC94544e1beb9eA463eF0075fE00Da9454
+                        // ),
+                        // DOES NOT WORK!!!
+                        chainAbi(chain, Safe_v141_SafeL2$Abi()),
+                        listener.Safe_v141_SafeL2$triggerOnSafeSetupEvent()
                     );
                 } else if (version == Version.V150) {
                     addTrigger(
@@ -116,8 +122,8 @@ contract Triggers is BaseTriggers {
                             .Safe_v150_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
                     addTrigger(
-                        chainAbi(chain, Safe_v150_Safe$Abi()),
-                        listener.Safe_v150_Safe$triggerOnSafeSetupEvent()
+                        chainAbi(chain, Safe_v150_SafeL2$Abi()),
+                        listener.Safe_v150_SafeL2$triggerOnSafeSetupEvent()
                     );
                 } else {}
             }
@@ -125,15 +131,20 @@ contract Triggers is BaseTriggers {
     }
 }
 
+// Safe_v100_SafeProxyFactory$OnProxyCreationEvent,
+// Safe_v111_SafeProxyFactory$OnProxyCreationEvent,
+// Safe_v130_SafeProxyFactory$OnProxyCreationEvent,
+// Safe_v141_SafeProxyFactory$OnProxyCreationEvent,
+// Safe_v150_SafeProxyFactory$OnProxyCreationEvent,
 contract Listener is
     Safe_v100_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v111_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v130_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v141_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v150_SafeProxyFactory$OnProxyCreationEvent,
-    Safe_v130_Safe$OnSafeSetupEvent,
-    Safe_v141_Safe$OnSafeSetupEvent,
-    Safe_v150_Safe$OnSafeSetupEvent
+    Safe_v130_SafeL2$OnSafeSetupEvent,
+    Safe_v141_SafeL2$OnSafeSetupEvent,
+    Safe_v150_SafeL2$OnSafeSetupEvent
 {
     event ProxyCreation(uint256 chainId, address proxy, string version);
 
@@ -147,7 +158,8 @@ contract Listener is
         address initiator,
         address owner, // TODO: How to store array of owners? // //address[] owners
         uint256 threshold,
-        address fallbackHandler
+        address fallbackHandler,
+        bool isOfficial
     );
 
     function Safe_v100_SafeProxyFactory$onProxyCreationEvent(
@@ -174,21 +186,20 @@ contract Listener is
         emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.3.0");
     }
 
-    function Safe_v130_Safe$onSafeSetupEvent(
+    function Safe_v130_SafeL2$onSafeSetupEvent(
         EventContext memory ctx,
-        Safe_v130_Safe$SafeSetupEventParams memory inputs
+        Safe_v130_SafeL2$SafeSetupEventParams memory inputs
     ) external override {
         address safe = ctx.txn.call.callee;
-        if (isOfficialSafe(safe)) {
-            emit SafeSetup(
-                uint64(block.chainid),
-                safe,
-                inputs.initiator,
-                inputs.owners[0],
-                inputs.threshold,
-                inputs.fallbackHandler
-            );
-        }
+        emit SafeSetup(
+            uint64(block.chainid),
+            safe,
+            inputs.initiator,
+            inputs.owners[0],
+            inputs.threshold,
+            inputs.fallbackHandler,
+            isOfficialSafe(safe)
+        );
     }
 
     function Safe_v141_SafeProxyFactory$onProxyCreationEvent(
@@ -199,21 +210,20 @@ contract Listener is
         emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.4.1");
     }
 
-    function Safe_v141_Safe$onSafeSetupEvent(
+    function Safe_v141_SafeL2$onSafeSetupEvent(
         EventContext memory ctx,
-        Safe_v141_Safe$SafeSetupEventParams memory inputs
+        Safe_v141_SafeL2$SafeSetupEventParams memory inputs
     ) external override {
         address safe = ctx.txn.call.callee;
-        if (isOfficialSafe(safe)) {
-            emit SafeSetup(
-                uint64(block.chainid),
-                safe,
-                inputs.initiator,
-                inputs.owners[0],
-                inputs.threshold,
-                inputs.fallbackHandler
-            );
-        }
+        emit SafeSetup(
+            uint64(block.chainid),
+            safe,
+            inputs.initiator,
+            inputs.owners[0],
+            inputs.threshold,
+            inputs.fallbackHandler,
+            isOfficialSafe(safe)
+        );
     }
 
     function Safe_v150_SafeProxyFactory$onProxyCreationEvent(
@@ -224,21 +234,20 @@ contract Listener is
         emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.5.0");
     }
 
-    function Safe_v150_Safe$onSafeSetupEvent(
+    function Safe_v150_SafeL2$onSafeSetupEvent(
         EventContext memory ctx,
-        Safe_v150_Safe$SafeSetupEventParams memory inputs
+        Safe_v150_SafeL2$SafeSetupEventParams memory inputs
     ) external override {
         address safe = ctx.txn.call.callee;
-        if (isOfficialSafe(safe)) {
-            emit SafeSetup(
-                uint64(block.chainid),
-                safe,
-                inputs.initiator,
-                inputs.owners[0],
-                inputs.threshold,
-                inputs.fallbackHandler
-            );
-        }
+        emit SafeSetup(
+            uint64(block.chainid),
+            safe,
+            inputs.initiator,
+            inputs.owners[0],
+            inputs.threshold,
+            inputs.fallbackHandler,
+            isOfficialSafe(safe)
+        );
     }
 
     function isOfficialSafe(address safe) internal view returns (bool) {
