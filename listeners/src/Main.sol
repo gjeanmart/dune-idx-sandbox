@@ -3,30 +3,12 @@ pragma solidity ^0.8.13;
 
 import "sim-idx-sol/Simidx.sol";
 import "sim-idx-generated/Generated.sol";
+import {SafeUtils} from "./libs/SafeUtils.sol";
 
 contract Triggers is BaseTriggers {
-    // Available versions
-    enum Version {
-        V100,
-        V111,
-        V130_CANONICAL,
-        V130_EIP155,
-        V141,
-        V150
-    }
-
-    // Factory addresses for each version
-    address constant FACTORY_V100 = 0x12302fE9c02ff50939BaAaaf415fc226C078613C;
-    address constant FACTORY_V111 = 0x76E2cFc1F5Fa8F6a5b3fC4c8F4788F0116861F9B;
-    address constant FACTORY_V130_CANONICAL =
-        0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2;
-    address constant FACTORY_V130_EIP155 =
-        0xC22834581EbC8527d974F8a1c97E1bEA4EF910BC;
-    address constant FACTORY_V141 = 0x4e1DCf7AD4e460CfD30791CCC4F9c8a4f820ec67;
-    address constant FACTORY_V150 = 0x14F2982D601c9458F93bd70B218933A6f8165e7b;
-
     // mapping of chainId => supported versions as enum
-    mapping(Chains chain => Version[] versions) public availableVersions;
+    mapping(Chains chain => SafeUtils.Version[] versions)
+        public availableVersions;
 
     // All supported chains by this indexer
     Chains[] public supportedChains;
@@ -40,24 +22,26 @@ contract Triggers is BaseTriggers {
         supportedChains.push(Chains.Unichain);
 
         // Ethereum
-        availableVersions[Chains.Ethereum].push(Version.V100);
-        availableVersions[Chains.Ethereum].push(Version.V111);
-        availableVersions[Chains.Ethereum].push(Version.V130_CANONICAL);
-        availableVersions[Chains.Ethereum].push(Version.V130_EIP155);
-        availableVersions[Chains.Ethereum].push(Version.V141);
-        availableVersions[Chains.Ethereum].push(Version.V150);
+        availableVersions[Chains.Ethereum].push(SafeUtils.Version.V100);
+        availableVersions[Chains.Ethereum].push(SafeUtils.Version.V111);
+        availableVersions[Chains.Ethereum].push(
+            SafeUtils.Version.V130_CANONICAL
+        );
+        availableVersions[Chains.Ethereum].push(SafeUtils.Version.V130_EIP155);
+        availableVersions[Chains.Ethereum].push(SafeUtils.Version.V141);
+        availableVersions[Chains.Ethereum].push(SafeUtils.Version.V150);
         // // Base
-        // availableVersions[Chains.Base].push(Version.V130_CANONICAL);
-        // availableVersions[Chains.Base].push(Version.V130_EIP155);
-        // availableVersions[Chains.Base].push(Version.V141);
+        // availableVersions[Chains.Base].push(SafeUtils.Version.V130_CANONICAL);
+        // availableVersions[Chains.Base].push(SafeUtils.Version.V130_EIP155);
+        // availableVersions[Chains.Base].push(SafeUtils.Version.V141);
         // // WorldChain
-        // availableVersions[Chains.WorldChain].push(Version.V130_CANONICAL);
-        // availableVersions[Chains.WorldChain].push(Version.V130_EIP155);
-        // availableVersions[Chains.WorldChain].push(Version.V141);
+        // availableVersions[Chains.WorldChain].push(SafeUtils.Version.V130_CANONICAL);
+        // availableVersions[Chains.WorldChain].push(SafeUtils.Version.V130_EIP155);
+        // availableVersions[Chains.WorldChain].push(SafeUtils.Version.V141);
         // // Unichain
-        // availableVersions[Chains.Unichain].push(Version.V130_CANONICAL);
-        // availableVersions[Chains.Unichain].push(Version.V130_EIP155);
-        // availableVersions[Chains.Unichain].push(Version.V141);
+        // availableVersions[Chains.Unichain].push(SafeUtils.Version.V130_CANONICAL);
+        // availableVersions[Chains.Unichain].push(SafeUtils.Version.V130_EIP155);
+        // availableVersions[Chains.Unichain].push(SafeUtils.Version.V141);
     }
 
     function triggers() external virtual override {
@@ -66,124 +50,216 @@ contract Triggers is BaseTriggers {
         for (uint256 i = 0; i < supportedChains.length; i++) {
             Chains chain = supportedChains[i];
             for (uint256 i = 0; i < availableVersions[chain].length; i++) {
-                Version version = availableVersions[chain][i];
-                if (version == Version.V100) {
+                SafeUtils.Version version = availableVersions[chain][i];
+
+                ////////////////////////////////////////////////////////////
+                // Add trigger for ProxyCreation event
+                ////////////////////////////////////////////////////////////
+
+                if (version == SafeUtils.Version.V100) {
                     addTrigger(
-                        chainContract(chain, FACTORY_V100),
+                        chainContract(chain, SafeUtils.FACTORY_V100),
                         listener
                             .Safe_v100_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
-                } else if (version == Version.V111) {
+                } else if (version == SafeUtils.Version.V111) {
                     addTrigger(
-                        chainContract(chain, FACTORY_V111),
+                        chainContract(chain, SafeUtils.FACTORY_V111),
                         listener
                             .Safe_v111_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
-                } else if (version == Version.V130_CANONICAL) {
+                } else if (version == SafeUtils.Version.V130_CANONICAL) {
                     addTrigger(
-                        chainContract(chain, FACTORY_V130_CANONICAL),
+                        chainContract(chain, SafeUtils.FACTORY_V130_CANONICAL),
                         listener
                             .Safe_v130_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
+                } else if (version == SafeUtils.Version.V130_EIP155) {
                     addTrigger(
-                        chainAbi(chain, Safe_v130_SafeL2$Abi()),
-                        listener.Safe_v130_SafeL2$triggerOnSafeSetupEvent()
-                    );
-                } else if (version == Version.V130_EIP155) {
-                    addTrigger(
-                        chainContract(chain, FACTORY_V130_EIP155),
+                        chainContract(chain, SafeUtils.FACTORY_V130_EIP155),
                         listener
                             .Safe_v130_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
+                } else if (version == SafeUtils.Version.V141) {
                     addTrigger(
-                        chainAbi(chain, Safe_v130_SafeL2$Abi()),
-                        listener.Safe_v130_SafeL2$triggerOnSafeSetupEvent()
-                    );
-                } else if (version == Version.V141) {
-                    addTrigger(
-                        chainContract(chain, FACTORY_V141),
+                        chainContract(chain, SafeUtils.FACTORY_V141),
                         listener
                             .Safe_v141_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
+                } else if (version == SafeUtils.Version.V150) {
                     addTrigger(
-                        // WORKS!!!
-                        // chainContract(
-                        //     chain,
-                        //     0x1E16C4aC94544e1beb9eA463eF0075fE00Da9454
-                        // ),
-                        // DOES NOT WORK!!!
-                        chainAbi(chain, Safe_v141_SafeL2$Abi()),
-                        listener.Safe_v141_SafeL2$triggerOnSafeSetupEvent()
-                    );
-                } else if (version == Version.V150) {
-                    addTrigger(
-                        chainContract(chain, FACTORY_V150),
+                        chainContract(chain, SafeUtils.FACTORY_V150),
                         listener
                             .Safe_v150_SafeProxyFactory$triggerOnProxyCreationEvent()
                     );
-                    addTrigger(
-                        chainAbi(chain, Safe_v150_SafeL2$Abi()),
-                        listener.Safe_v150_SafeL2$triggerOnSafeSetupEvent()
-                    );
-                } else {}
+                }
+
+                ////////////////////////////////////////////////////////////
+                // Add trigger for SafeSetup event
+                ////////////////////////////////////////////////////////////
             }
+
+            addTrigger(
+                chainAbi(chain, Safe_v100_Safe$Abi()),
+                listener.Safe_v100_Safe$triggerOnSetupFunction()
+            );
+            addTrigger(
+                chainAbi(chain, Safe_v111_Safe$Abi()),
+                listener.Safe_v111_Safe$triggerOnSetupFunction()
+            );
+            addTrigger(
+                chainAbi(chain, Safe_v130_SafeL2$Abi()),
+                listener.Safe_v130_SafeL2$triggerOnSafeSetupEvent()
+            );
+            addTrigger(
+                chainAbi(chain, Safe_v141_SafeL2$Abi()),
+                listener.Safe_v141_SafeL2$triggerOnSafeSetupEvent()
+            );
+            addTrigger(
+                chainAbi(chain, Safe_v150_SafeL2$Abi()),
+                listener.Safe_v150_SafeL2$triggerOnSafeSetupEvent()
+            );
+
+            // addTrigger(
+            //     chainContract(
+            //         chain,
+            //         0x5716c14696C753cD9C03357cEF54Ee772E63BF03
+            //     ),
+            //     listener.Safe_v150_SafeL2$triggerOnSafeSetupEvent()
+            // );
         }
     }
 }
 
-// Safe_v100_SafeProxyFactory$OnProxyCreationEvent,
-// Safe_v111_SafeProxyFactory$OnProxyCreationEvent,
-// Safe_v130_SafeProxyFactory$OnProxyCreationEvent,
-// Safe_v141_SafeProxyFactory$OnProxyCreationEvent,
-// Safe_v150_SafeProxyFactory$OnProxyCreationEvent,
 contract Listener is
     Safe_v100_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v111_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v130_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v141_SafeProxyFactory$OnProxyCreationEvent,
     Safe_v150_SafeProxyFactory$OnProxyCreationEvent,
+    Safe_v100_Safe$OnSetupFunction,
+    Safe_v111_Safe$OnSetupFunction,
     Safe_v130_SafeL2$OnSafeSetupEvent,
     Safe_v141_SafeL2$OnSafeSetupEvent,
     Safe_v150_SafeL2$OnSafeSetupEvent
 {
-    event ProxyCreation(uint256 chainId, address proxy, string version);
-
-    //map of chainId => safe address => boolean
-    mapping(uint256 chainId => mapping(address safe => bool isOfficial))
-        public officialSafes;
-
-    event SafeSetup(
+    struct SafeState {
+        uint64 chainId;
+        address safe;
+        address[] owners;
+        uint256 threshold;
+        address fallbackHandler;
+        bool isOfficial;
+    }
+    event ProxyCreation(
+        uint256 blockNumber,
+        uint256 blockTimestamp,
+        uint256 chainId,
+        address proxy,
+        string version,
+        bool isOfficial
+    );
+    event OwnerAdded(
+        uint256 blockNumber,
+        uint256 blockTimestamp,
         uint256 chainId,
         address safe,
-        address initiator,
-        address owner, // TODO: How to store array of owners? // //address[] owners
+        address owner
+    );
+    event OwnerRemoved(
+        uint256 blockNumber,
+        uint256 blockTimestamp,
+        uint256 chainId,
+        address safe,
+        address owner
+    );
+    event SafeSnapshot(
+        uint256 blockNumber,
+        uint256 blockTimestamp,
+        uint256 chainId,
+        address safe,
         uint256 threshold,
         address fallbackHandler,
         bool isOfficial
     );
+    event SafeOwnersStateSnapshot(
+        uint256 blockNumber,
+        uint256 blockTimestamp,
+        uint256 chainId,
+        address safe,
+        address owner
+    );
+
+    //map of chainId => safe address => SafeState
+    mapping(uint256 chainId => mapping(address safe => SafeState)) public safes;
+
+    ////////////////////////////////////////////////////////////
+    // Triggers
+    ////////////////////////////////////////////////////////////
 
     function Safe_v100_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v100_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override {
-        officialSafes[uint64(block.chainid)][inputs.proxy] = true;
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.0.0");
+        handleProxyCreation(inputs.proxy, "v1.0.0");
     }
 
     function Safe_v111_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v111_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override {
-        officialSafes[uint64(block.chainid)][inputs.proxy] = true;
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.1.1");
+        handleProxyCreation(inputs.proxy, "v1.1.1");
     }
 
     function Safe_v130_SafeProxyFactory$onProxyCreationEvent(
         EventContext memory ctx,
         Safe_v130_SafeProxyFactory$ProxyCreationEventParams memory inputs
     ) external override {
-        officialSafes[uint64(block.chainid)][inputs.proxy] = true;
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.3.0");
+        handleProxyCreation(inputs.proxy, "v1.3.0");
+    }
+
+    function Safe_v141_SafeProxyFactory$onProxyCreationEvent(
+        EventContext memory ctx,
+        Safe_v141_SafeProxyFactory$ProxyCreationEventParams memory inputs
+    ) external override {
+        handleProxyCreation(inputs.proxy, "v1.4.1");
+    }
+
+    function Safe_v150_SafeProxyFactory$onProxyCreationEvent(
+        EventContext memory ctx,
+        Safe_v150_SafeProxyFactory$ProxyCreationEventParams memory inputs
+    ) external override {
+        handleProxyCreation(inputs.proxy, "v1.5.0");
+    }
+
+    function Safe_v100_Safe$onSetupFunction(
+        FunctionContext memory ctx,
+        Safe_v100_Safe$SetupFunctionInputs memory inputs
+    ) external override {
+        address safe = ctx.txn.call.callee;
+        address factory = ctx.txn.call.caller;
+        handleSafeSetup(
+            safe,
+            factory,
+            inputs._owners,
+            inputs._threshold,
+            0x0000000000000000000000000000000000000000 // No fallback handler ?
+        );
+    }
+
+    function Safe_v111_Safe$onSetupFunction(
+        FunctionContext memory ctx,
+        Safe_v111_Safe$SetupFunctionInputs memory inputs
+    ) external override {
+        address safe = ctx.txn.call.callee;
+        address factory = ctx.txn.call.caller;
+        handleSafeSetup(
+            safe,
+            factory,
+            inputs._owners,
+            inputs._threshold,
+            inputs.fallbackHandler
+        );
     }
 
     function Safe_v130_SafeL2$onSafeSetupEvent(
@@ -191,23 +267,14 @@ contract Listener is
         Safe_v130_SafeL2$SafeSetupEventParams memory inputs
     ) external override {
         address safe = ctx.txn.call.callee;
-        emit SafeSetup(
-            uint64(block.chainid),
+        address factory = inputs.initiator;
+        handleSafeSetup(
             safe,
-            inputs.initiator,
-            inputs.owners[0],
+            factory,
+            inputs.owners,
             inputs.threshold,
-            inputs.fallbackHandler,
-            isOfficialSafe(safe)
+            inputs.fallbackHandler
         );
-    }
-
-    function Safe_v141_SafeProxyFactory$onProxyCreationEvent(
-        EventContext memory ctx,
-        Safe_v141_SafeProxyFactory$ProxyCreationEventParams memory inputs
-    ) external override {
-        officialSafes[uint64(block.chainid)][inputs.proxy] = true;
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.4.1");
     }
 
     function Safe_v141_SafeL2$onSafeSetupEvent(
@@ -215,23 +282,14 @@ contract Listener is
         Safe_v141_SafeL2$SafeSetupEventParams memory inputs
     ) external override {
         address safe = ctx.txn.call.callee;
-        emit SafeSetup(
-            uint64(block.chainid),
+        address factory = inputs.initiator;
+        handleSafeSetup(
             safe,
-            inputs.initiator,
-            inputs.owners[0],
+            factory,
+            inputs.owners,
             inputs.threshold,
-            inputs.fallbackHandler,
-            isOfficialSafe(safe)
+            inputs.fallbackHandler
         );
-    }
-
-    function Safe_v150_SafeProxyFactory$onProxyCreationEvent(
-        EventContext memory ctx,
-        Safe_v150_SafeProxyFactory$ProxyCreationEventParams memory inputs
-    ) external override {
-        officialSafes[uint64(block.chainid)][inputs.proxy] = true;
-        emit ProxyCreation(uint64(block.chainid), inputs.proxy, "v1.5.0");
     }
 
     function Safe_v150_SafeL2$onSafeSetupEvent(
@@ -239,18 +297,92 @@ contract Listener is
         Safe_v150_SafeL2$SafeSetupEventParams memory inputs
     ) external override {
         address safe = ctx.txn.call.callee;
-        emit SafeSetup(
-            uint64(block.chainid),
+        address factory = inputs.initiator;
+        handleSafeSetup(
             safe,
-            inputs.initiator,
-            inputs.owners[0],
+            factory,
+            inputs.owners,
             inputs.threshold,
-            inputs.fallbackHandler,
-            isOfficialSafe(safe)
+            inputs.fallbackHandler
         );
     }
 
-    function isOfficialSafe(address safe) internal view returns (bool) {
-        return officialSafes[block.chainid][safe];
+    ////////////////////////////////////////////////////////////
+    // Handlers
+    ////////////////////////////////////////////////////////////
+
+    function handleProxyCreation(address safe, string memory version) internal {
+        uint256 chainId = uint256(block.chainid);
+        uint256 blockNumber = uint256(block.number);
+        uint256 blockTimestamp = uint256(block.timestamp);
+        emit ProxyCreation(
+            blockNumber,
+            blockTimestamp,
+            chainId,
+            safe,
+            version,
+            true // Always true for proxy creation
+        );
+    }
+
+    function handleSafeSetup(
+        address safe,
+        address factory,
+        address[] memory owners,
+        uint256 threshold,
+        address fallbackHandler
+    ) internal {
+        uint256 chainId = uint256(block.chainid);
+        uint256 blockNumber = uint256(block.number);
+        uint256 blockTimestamp = uint256(block.timestamp);
+        bool isOfficial = isOfficialSafe(factory);
+
+        SafeState memory safeState = SafeState({
+            chainId: uint64(block.chainid),
+            safe: safe,
+            owners: owners,
+            threshold: threshold,
+            fallbackHandler: fallbackHandler,
+            isOfficial: isOfficial
+        });
+
+        for (uint256 i = 0; i < safeState.owners.length; i++) {
+            emit OwnerAdded(
+                chainId,
+                blockNumber,
+                blockTimestamp,
+                safe,
+                safeState.owners[i]
+            );
+        }
+
+        emit SafeSnapshot(
+            chainId,
+            blockNumber,
+            blockTimestamp,
+            safe,
+            safeState.threshold,
+            safeState.fallbackHandler,
+            safeState.isOfficial
+        );
+        for (uint256 i = 0; i < safeState.owners.length; i++) {
+            emit SafeOwnersStateSnapshot(
+                chainId,
+                blockNumber,
+                blockTimestamp,
+                safe,
+                safeState.owners[i]
+            );
+        }
+    }
+
+    function isOfficialSafe(address factory) internal view returns (bool) {
+        return
+            factory == SafeUtils.FACTORY_V100 ||
+            factory == SafeUtils.FACTORY_V111 ||
+            factory == SafeUtils.FACTORY_V130_CANONICAL ||
+            factory == SafeUtils.FACTORY_V130_EIP155 ||
+            factory == SafeUtils.FACTORY_V141 ||
+            factory == SafeUtils.FACTORY_V150;
     }
 }

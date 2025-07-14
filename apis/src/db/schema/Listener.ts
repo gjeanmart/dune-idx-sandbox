@@ -3,17 +3,44 @@ import { pgEnum, pgTable as table } from "drizzle-orm/pg-core";
 import * as t from "drizzle-orm/pg-core";
 import { db, types } from "@duneanalytics/sim-idx";
 
+export const ownerAdded = table("owner_added", {
+  blockNumber: db.uint256('block_number'),
+  blockTimestamp: db.uint256('block_timestamp'),
+  chainId: db.uint256('chain_id'),
+  safe: db.address('safe'),
+  owner: db.address('owner'),
+})
+
+export const ownerRemoved = table("owner_removed", {
+  blockNumber: db.uint256('block_number'),
+  blockTimestamp: db.uint256('block_timestamp'),
+  chainId: db.uint256('chain_id'),
+  safe: db.address('safe'),
+  owner: db.address('owner'),
+})
+
 export const proxyCreation = table("proxy_creation", {
+  blockNumber: db.uint256('block_number'),
+  blockTimestamp: db.uint256('block_timestamp'),
   chainId: db.uint256('chain_id'),
   proxy: db.address('proxy'),
   version: t.text('version'),
+  isOfficial: t.boolean('is_official'),
 })
 
-export const safeSetup = table("safe_setup", {
+export const safeOwnersStateSnapshot = table("safe_owners_state_snapshot", {
+  blockNumber: db.uint256('block_number'),
+  blockTimestamp: db.uint256('block_timestamp'),
   chainId: db.uint256('chain_id'),
   safe: db.address('safe'),
-  initiator: db.address('initiator'),
   owner: db.address('owner'),
+})
+
+export const safeSnapshot = table("safe_snapshot", {
+  blockNumber: db.uint256('block_number'),
+  blockTimestamp: db.uint256('block_timestamp'),
+  chainId: db.uint256('chain_id'),
+  safe: db.address('safe'),
   threshold: db.uint256('threshold'),
   fallbackHandler: db.address('fallback_handler'),
   isOfficial: t.boolean('is_official'),

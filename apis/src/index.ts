@@ -1,23 +1,32 @@
-import { eq } from "drizzle-orm";
+import { count } from "drizzle-orm";
 import { proxyCreation } from "./db/schema/Listener"; // Adjust the import path as necessary
-import { types, db, App } from "@duneanalytics/sim-idx"; // Import schema to ensure it's registered
-
-const filterToken0 = types.Address.from(
-  "7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"
-);
+import { db, App } from "@duneanalytics/sim-idx"; // Import schema to ensure it's registered
 
 const app = App.create();
 app.get("/*", async (c) => {
   try {
+    // add pagination
+    const page = Number(c.req.query("page")) || 1;
+    const limit = Number(c.req.query("limit")) || 100;
+    const offset = (page - 1) * limit;
+
     const result = await db
       .client(c)
       .select()
       .from(proxyCreation)
-      .where(eq(proxyCreation.proxy, filterToken0))
-      .limit(5);
+      .limit(limit)
+      .offset(offset);
+
+    const total = await db
+      .client(c)
+      .select({ count: count() })
+      .from(proxyCreation);
 
     return Response.json({
-      result: result,
+      result,
+      page,
+      limit,
+      total: total[0].count,
     });
   } catch (e) {
     console.error("Database operation failed:", e);
