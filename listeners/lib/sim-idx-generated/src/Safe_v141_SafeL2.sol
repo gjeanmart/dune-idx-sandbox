@@ -228,12 +228,66 @@ struct Safe_v141_SafeL2$SwapOwnerFunctionInputs {
     address newOwner;
 }
 
+struct Safe_v141_SafeL2$AddedOwnerEventParams {
+    address owner;
+}
+
+struct Safe_v141_SafeL2$ChangedThresholdEventParams {
+    uint256 threshold;
+}
+
+struct Safe_v141_SafeL2$RemovedOwnerEventParams {
+    address owner;
+}
+
 struct Safe_v141_SafeL2$SafeSetupEventParams {
     address initiator;
     address[] owners;
     uint256 threshold;
     address initializer;
     address fallbackHandler;
+}
+
+abstract contract Safe_v141_SafeL2$OnAddedOwnerEvent {
+    function Safe_v141_SafeL2$onAddedOwnerEvent(EventContext memory ctx, Safe_v141_SafeL2$AddedOwnerEventParams memory inputs) virtual external;
+
+    function Safe_v141_SafeL2$triggerOnAddedOwnerEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v141_SafeL2",
+            selector: bytes32(0x9465fa0c962cc76958e6373a993326400c1c94f8be2fe3a952adfa7f60b2ea26),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v141_SafeL2$onAddedOwnerEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v141_SafeL2$OnChangedThresholdEvent {
+    function Safe_v141_SafeL2$onChangedThresholdEvent(EventContext memory ctx, Safe_v141_SafeL2$ChangedThresholdEventParams memory inputs) virtual external;
+
+    function Safe_v141_SafeL2$triggerOnChangedThresholdEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v141_SafeL2",
+            selector: bytes32(0x610f7ff2b304ae8903c3de74c60c6ab1f7d6226b3f52c5161905bb5ad4039c93),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v141_SafeL2$onChangedThresholdEvent.selector
+        });
+    }
+}
+
+abstract contract Safe_v141_SafeL2$OnRemovedOwnerEvent {
+    function Safe_v141_SafeL2$onRemovedOwnerEvent(EventContext memory ctx, Safe_v141_SafeL2$RemovedOwnerEventParams memory inputs) virtual external;
+
+    function Safe_v141_SafeL2$triggerOnRemovedOwnerEvent() view external returns (Trigger memory) {
+        return Trigger({
+            abiName: "Safe_v141_SafeL2",
+            selector: bytes32(0xf8d49fc529812e9a7c5c50e69c20f0dccc0db8fa95c98bc58cc9a4f1c1299eaf),
+            triggerType: TriggerType.EVENT,
+            listenerCodehash: address(this).codehash,
+            handlerSelector: this.Safe_v141_SafeL2$onRemovedOwnerEvent.selector
+        });
+    }
 }
 
 abstract contract Safe_v141_SafeL2$OnSafeSetupEvent {
@@ -1091,17 +1145,35 @@ abstract contract Safe_v141_SafeL2$PreSwapOwnerFunction {
 }
 
 contract Safe_v141_SafeL2$EmitAllEvents is
-  Safe_v141_SafeL2$OnSafeSetupEvent
+  Safe_v141_SafeL2$OnAddedOwnerEvent,
+Safe_v141_SafeL2$OnChangedThresholdEvent,
+Safe_v141_SafeL2$OnRemovedOwnerEvent,
+Safe_v141_SafeL2$OnSafeSetupEvent
 {
-  event SafeSetup(address initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler);
+  event AddedOwner(address owner);
+event ChangedThreshold(uint256 threshold);
+event RemovedOwner(address owner);
+event SafeSetup(address initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler);
 
-  function Safe_v141_SafeL2$onSafeSetupEvent(EventContext memory ctx, Safe_v141_SafeL2$SafeSetupEventParams memory inputs) virtual external override {
+  function Safe_v141_SafeL2$onAddedOwnerEvent(EventContext memory ctx, Safe_v141_SafeL2$AddedOwnerEventParams memory inputs) virtual external override {
+    emit AddedOwner(inputs.owner);
+  }
+function Safe_v141_SafeL2$onChangedThresholdEvent(EventContext memory ctx, Safe_v141_SafeL2$ChangedThresholdEventParams memory inputs) virtual external override {
+    emit ChangedThreshold(inputs.threshold);
+  }
+function Safe_v141_SafeL2$onRemovedOwnerEvent(EventContext memory ctx, Safe_v141_SafeL2$RemovedOwnerEventParams memory inputs) virtual external override {
+    emit RemovedOwner(inputs.owner);
+  }
+function Safe_v141_SafeL2$onSafeSetupEvent(EventContext memory ctx, Safe_v141_SafeL2$SafeSetupEventParams memory inputs) virtual external override {
     emit SafeSetup(inputs.initiator, inputs.owners, inputs.threshold, inputs.initializer, inputs.fallbackHandler);
   }
 
   function allTriggers() view external returns (Trigger[] memory) {
-    Trigger[] memory triggers = new Trigger[](1);
-    triggers[0] = this.Safe_v141_SafeL2$triggerOnSafeSetupEvent();
+    Trigger[] memory triggers = new Trigger[](4);
+    triggers[0] = this.Safe_v141_SafeL2$triggerOnAddedOwnerEvent();
+    triggers[1] = this.Safe_v141_SafeL2$triggerOnChangedThresholdEvent();
+    triggers[2] = this.Safe_v141_SafeL2$triggerOnRemovedOwnerEvent();
+    triggers[3] = this.Safe_v141_SafeL2$triggerOnSafeSetupEvent();
     return triggers;
   }
 }
