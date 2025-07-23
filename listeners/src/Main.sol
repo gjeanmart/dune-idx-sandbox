@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import "sim-idx-sol/Simidx.sol";
 import "sim-idx-generated/Generated.sol";
 import {SafeUtils} from "./libs/SafeUtils.sol";
-import {Handler} from "./handler.sol";
+import {Handler} from "./Handler.sol";
 
 contract Triggers is BaseTriggers {
     // mapping of chainId => supported versions as enum
